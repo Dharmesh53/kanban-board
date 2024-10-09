@@ -1,0 +1,37 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+  font-family: "Inter";
+  border: 2px solid var(--border);
+  background-color: var(--background-white);
+  color: var(--button-black);
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.button:disabled {
+  background-color: var(--background-disabled);
+  cursor: not-allowed;
+}
+
+.icon:first-child {
+  margin-right: 8px;
+}
+
+.icon:last-child {
+  margin-left: 4px;
+}
+
+.button.small {
+  font-size: var(--text-sm);
+}
+.button.medium {
+  font-size: var(--text-base);
+}
+
+.button.large {
+  font-size: var(--text-lg);
+}
