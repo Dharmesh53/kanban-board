@@ -8,19 +8,17 @@ import {
 import { Button } from "../button";
 import styles from "./select.module.css";
 
-export const Select = ({
+export const Select = <T,>({
   options,
   placeholder = "Select an option",
   size = "medium",
-  shadow = false,
   width,
   onChange,
-}: SelectProps) => {
-  const [selectedOption, setSelectedOption] = useState<OptionDataType | null>(
-    null
-  );
+}: SelectProps<T>) => {
+  const [selectedOption, setSelectedOption] =
+    useState<OptionDataType<T> | null>(null);
 
-  const handleSelect = (option: OptionDataType) => {
+  const handleSelect = (option: OptionDataType<T>) => {
     setSelectedOption(option);
     if (onChange) {
       onChange(option.value);
@@ -34,48 +32,33 @@ export const Select = ({
           label={selectedOption ? selectedOption.label : placeholder}
           Righticon="/assets/down.svg"
           size={size}
-          shadow={shadow}
           width={width}
         />
       </DropDownTrigger>
-      <DropDownContent width="130px">
+      <DropDownContent width={width}>
         {options.map((option) => (
-          <Option key={option.value} option={option} onSelect={handleSelect} />
+          <DropDownItem
+            key={String(option.value)}
+            onClick={() => handleSelect(option)}
+          >
+            <span className={styles.label}>{option.label}</span>
+          </DropDownItem>
         ))}
       </DropDownContent>
     </DropDown>
   );
 };
 
-export const Option = ({ option, onSelect }: OptionProps) => {
-  const handleClick = () => {
-    onSelect(option);
-  };
-
-  return (
-    <DropDownItem>
-      <div className={styles.option}>
-        <span className={styles.label}>{option.label}</span>
-      </div>
-    </DropDownItem>
-  );
-};
-
-interface OptionDataType {
+interface OptionDataType<T> {
   label: string;
-  value: string;
+  value: T;
 }
 
-interface OptionProps {
-  option: OptionDataType;
-  onSelect: (option: OptionDataType) => void;
-}
-
-interface SelectProps {
-  options: OptionDataType[];
+interface SelectProps<T> {
+  options: OptionDataType<T>[];
   placeholder?: string;
-  onChange?: (value: string) => void;
   size?: "small" | "medium" | "large";
   shadow?: boolean;
   width?: string;
+  onChange?: (value: T) => void;
 }

@@ -7,19 +7,16 @@ import {
   DropDownTrigger,
 } from "../dropdown";
 import styles from "./navbar.module.css";
-
-export const GroupingOptions = [
-  {
-    label: "Status",
-    value: "status",
-  },
-  {
-    label: "User",
-    value: "user",
-  },
-];
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { Grouping, Ordering } from "../../types";
 
 export const Navbar = () => {
+  const [grouping, setGrouping] = useLocalStorage("grouping", Grouping.STATUS);
+  const [ordering, setOrdering] = useLocalStorage(
+    "ordering",
+    Ordering.PRIORITY
+  );
+
   return (
     <div className={styles.navbar}>
       <DropDown>
@@ -36,15 +33,10 @@ export const Navbar = () => {
           <DropDownItem>
             <span className={styles.item}>
               <label>Grouping</label>
-              {/* <Button
-                label="Status"
-                Righticon="/assets/down.svg"
-                size="small"
-                width={"130px"}
-              /> */}
               <Select
                 options={GroupingOptions}
-                placeholder={"Status"}
+                placeholder={grouping}
+                onChange={setGrouping}
                 size="medium"
                 width="130px"
               />
@@ -53,11 +45,12 @@ export const Navbar = () => {
           <DropDownItem>
             <span className={styles.item}>
               <label>Ordering</label>
-              <Button
-                label="Priority"
-                Righticon="/assets/down.svg"
-                width={"130px"}
-                size="small"
+              <Select
+                options={OrderingOptions}
+                placeholder={ordering}
+                onChange={setOrdering}
+                size="medium"
+                width="130px"
               />
             </span>
           </DropDownItem>
@@ -66,3 +59,25 @@ export const Navbar = () => {
     </div>
   );
 };
+
+export const GroupingOptions = [
+  {
+    label: "Status",
+    value: Grouping.STATUS,
+  },
+  {
+    label: "User",
+    value: Grouping.USER,
+  },
+];
+
+export const OrderingOptions = [
+  {
+    label: "Priority",
+    value: Ordering.PRIORITY,
+  },
+  {
+    label: "Title",
+    value: Ordering.TITLE,
+  },
+];

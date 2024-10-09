@@ -17,6 +17,7 @@
 .item {
   margin: 5px 8px;
   padding: 4px;
+  background-color: beige;
   color: var(--text-black);
   border-radius: var(--border-radius-lg);
   cursor: pointer;

@@ -14,3 +14,8 @@
 .option:hover {
   background-color: var(--background-hover);
 }
+
+.label {
+  background-color: aquamarine;
+  width: 100%;
+}

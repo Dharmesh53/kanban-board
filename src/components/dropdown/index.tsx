@@ -81,7 +81,23 @@ export const DropDownContent = ({ children, width }: DropDownContentProps) => {
   ) : null;
 };
 
-export const DropDownItem = ({ children }: ChildrenProp) => {
-  // const { close } = useDropdown();
-  return <div className={styles.item}>{children}</div>;
+interface DropDownItemProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export const DropDownItem = ({ children, onClick }: DropDownItemProps) => {
+  const { close } = useDropdown();
+  return (
+    <div
+      className={styles.item}
+      onClick={() => {
+        if (onClick) {
+          onClick();
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
 };
