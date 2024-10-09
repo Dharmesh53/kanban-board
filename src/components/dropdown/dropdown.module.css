@@ -1,0 +1,29 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.content {
+  position: absolute;
+  background-color: var(--background-muted);
+  box-shadow: var(--shadow);
+  z-index: 1;
+  border: 2px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  margin-top: 5px;
+  min-width: 300px;
+}
+
+.item {
+  margin: 5px 8px;
+  padding: 4px;
+  color: var(--text-black);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+}
+
+.item:hover,
+.item:focus {
+  background-color: var(--background);
+  outline: none;
+}

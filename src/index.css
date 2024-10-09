@@ -1,13 +1,16 @@
 :root {
   --background-white: #ffffff; /* page background */
   --background: #f4f6fa; /* page background */
-  --background-muted: #f8fafb; /* dialog background */
+  --background-muted: #f8f8fa; /* dialog background */
   --border: #e5e5e5; /* all borders */
   --background-disabled: #cccccc; /* disabled background */
   --button-text: #6d6f73; /*each column heading button*/
-  --text-neutral: #979a98; /* CAM-*, grouping */
+  --text-neutral: #7f8280; /* CAM-*, grouping */
   --text-muted: #bfc1c2; /* card bottom text*/
   --text-black: #3f3f3f; /* black */
+  --border-radius-md: 6px; /* all borders */
+  --border-radius-lg: 8px; /* all borders */
+  --shadow: 0px 2px 4px rgba(0, 0, 0, 0.08); /*Shadow*/
   --text-xs: 0.8rem;
   --text-sm: 0.9rem;
   --text-base: 1rem;

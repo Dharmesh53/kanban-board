@@ -2,30 +2,39 @@ import styles from "./button.module.css";
 
 interface ButtonProps {
   label: string;
-  icon1?: string;
-  icon2?: string;
+  Lefticon?: string;
+  Righticon?: string;
   size?: "small" | "medium" | "large";
+  shadow?: boolean;
   disabled?: boolean;
+  width?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Button = ({
   label,
-  icon1,
-  icon2,
+  Lefticon,
+  Righticon,
   size = "medium",
+  shadow,
+  width,
   disabled = false,
   onClick,
 }: ButtonProps) => {
   return (
     <button
-      className={`${styles.button} ${styles[size]}`}
+      className={`${styles.button} ${styles[size]} ${shadow && styles.shadow}`}
       onClick={onClick}
       disabled={disabled}
+      style={width ? { minWidth: width } : undefined}
     >
-      {icon1 && <img src={icon1} alt={label} className={styles.icon} />}
+      {Lefticon && (
+        <img src={Lefticon} alt="Left icon" className={styles.Lefticon} />
+      )}
       {label}
-      {icon2 && <img src={icon2} alt={label} className={styles.icon} />}
+      {Righticon && (
+        <img src={Righticon} alt="Right icon" className={styles.Righticon} />
+      )}
     </button>
   );
 };

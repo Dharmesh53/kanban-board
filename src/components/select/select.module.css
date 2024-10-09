@@ -1,0 +1,16 @@
+/* select.module.css */
+.select {
+  position: relative;
+  display: inline-block;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: var(--background-hover);
+}
