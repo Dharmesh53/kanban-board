@@ -1,6 +1,6 @@
 import { useEffect, useState, Dispatch, SetStateAction } from "react";
 
-const getLocalValue = <T>(key: string, initValue: T): T => {
+export const getLocalValue = <T>(key: string, initValue: T): T => {
   if (typeof window === "undefined") {
     return initValue;
   }

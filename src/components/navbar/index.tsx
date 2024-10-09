@@ -7,15 +7,13 @@ import {
   DropDownTrigger,
 } from "../dropdown";
 import styles from "./navbar.module.css";
-import useLocalStorage from "../../hooks/useLocalStorage";
 import { Grouping, Ordering } from "../../types";
+import { useGrouping } from "../../contexts/grouping.context";
+import { useOrdering } from "../../contexts/ordering.context";
 
 export const Navbar = () => {
-  const [grouping, setGrouping] = useLocalStorage("grouping", Grouping.STATUS);
-  const [ordering, setOrdering] = useLocalStorage(
-    "ordering",
-    Ordering.PRIORITY
-  );
+  const { grouping, setGrouping } = useGrouping();
+  const { ordering, setOrdering } = useOrdering();
 
   return (
     <div className={styles.navbar}>
@@ -35,7 +33,9 @@ export const Navbar = () => {
               <label>Grouping</label>
               <Select
                 options={GroupingOptions}
-                placeholder={grouping}
+                placeholder={grouping[0]
+                  .toUpperCase()
+                  .concat(grouping.substring(1))}
                 onChange={setGrouping}
                 size="medium"
                 width="130px"
@@ -47,7 +47,9 @@ export const Navbar = () => {
               <label>Ordering</label>
               <Select
                 options={OrderingOptions}
-                placeholder={ordering}
+                placeholder={ordering[0]
+                  .toUpperCase()
+                  .concat(ordering.substring(1))}
                 onChange={setOrdering}
                 size="medium"
                 width="130px"
@@ -68,6 +70,10 @@ export const GroupingOptions = [
   {
     label: "User",
     value: Grouping.USER,
+  },
+  {
+    label: "Priority",
+    value: Grouping.PRIORITY,
   },
 ];
 

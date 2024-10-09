@@ -1,12 +1,29 @@
 import styles from "./kanban.module.css";
 import { QUICKSELL_API_URL } from "../../../lib";
 import { useState, useEffect } from "react";
-import { Data, Grouping } from "../../../types";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { Data } from "../../../types";
+import { Board } from "./board";
 
 export const KanbanBoard = () => {
+  const { data, loading, fetcher } = useKanbanBoardStates();
+
+  useEffect(() => {
+    fetcher();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.board}>Loading...</div>;
+  }
+
+  return (
+    <div className={styles.board}>
+      {data && <Board cards={data.tickets} users={data.users} />}
+    </div>
+  );
+};
+
+export const useKanbanBoardStates = () => {
   const [data, setData] = useState<Data | null>(null);
-  const [grouping, setGrouping] = useLocalStorage("grouping", Grouping.STATUS);
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetcher = async () => {
@@ -23,17 +40,5 @@ export const KanbanBoard = () => {
     }
   };
 
-  useEffect(() => {
-    fetcher();
-  }, []);
-
-  if (loading) {
-    return <div className={styles.board}>Loading...</div>;
-  }
-
-  return (
-    <div className={styles.board}>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
-  );
+  return { data, setData, loading, setLoading, fetcher };
 };

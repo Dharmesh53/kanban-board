@@ -1,5 +1,41 @@
 .board {
   background-color: var(--background);
   flex-grow: 1;
-  overflow-x: scroll;
+  display: flex;
+  overflow-x: auto;
+}
+
+.column {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.column-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.column-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.card-priority,
+.card-status,
+.card-user {
+  font-size: 0.9em;
+  margin: 2px 0;
 }

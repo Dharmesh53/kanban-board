@@ -1,4 +1,4 @@
-export interface Ticket {
+export interface Card {
   id: string;
   title: string;
   tag: string[];
@@ -14,16 +14,17 @@ export interface User {
 }
 
 export interface Data {
-  tickets: Ticket[];
+  tickets: Card[];
   users: User[];
 }
 
 export enum Grouping {
-  STATUS = "Status",
-  USER = "User",
+  STATUS = "status",
+  USER = "user",
+  PRIORITY = "priority",
 }
 
 export enum Ordering {
-  PRIORITY = "Priority",
-  TITLE = "Title",
+  PRIORITY = "priority",
+  TITLE = "title",
 }

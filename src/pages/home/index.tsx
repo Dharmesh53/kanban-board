@@ -1,4 +1,4 @@
-import HomeLayout from "../../layout/home-layout";
+import HomeLayout from "../../layouts/home";
 import { Navbar } from "../../components/navbar";
 import { KanbanBoard } from "./kanban-board";
 
