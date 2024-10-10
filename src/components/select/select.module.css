@@ -17,4 +17,11 @@
 
 .label {
   width: 100%;
+  color: var(--text-neutral);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.label:hover {
+  color: var(--text-black);
 }

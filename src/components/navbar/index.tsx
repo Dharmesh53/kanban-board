@@ -38,7 +38,7 @@ export const Navbar = () => {
                   .concat(grouping.substring(1))}
                 onChange={setGrouping}
                 size="medium"
-                width="130px"
+                width="100px"
               />
             </span>
           </DropDownItem>
@@ -52,7 +52,7 @@ export const Navbar = () => {
                   .concat(ordering.substring(1))}
                 onChange={setOrdering}
                 size="medium"
-                width="130px"
+                width="100px"
               />
             </span>
           </DropDownItem>
