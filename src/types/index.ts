@@ -31,10 +31,10 @@ export enum Ordering {
 
 export enum Status {
   BACKLOG = "Backlog",
-  CANCELLED = "Cancelled",
+  TODO = "Todo",
   INPROGRESS = "In progress",
   DONE = "Done",
-  TODO = "Todo",
+  CANCELLED = "Cancelled",
 }
 
 export enum Priority {

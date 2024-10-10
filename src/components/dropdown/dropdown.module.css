@@ -5,7 +5,8 @@
 
 .content {
   position: absolute;
-  background-color: var(--background-muted);
+  padding: 0.3rem 0.8rem;
+  background-color: #f6f8fa;
   box-shadow: var(--shadow);
   z-index: 1;
   border: 2px solid var(--border);

@@ -13,6 +13,7 @@ import {
   getPriorityIcon,
   getStatusIcon,
 } from "../../../../lib";
+import { Avatar } from "../../../../components/avatar";
 
 interface ColumnProps {
   title: string;
@@ -34,21 +35,26 @@ const Column = ({ title, cards, users }: ColumnProps) => {
   const getHeading = () => {
     return grouping === Grouping.PRIORITY ? getPriorityHeading(title) : title;
   };
+  const findUserByName = () => {
+    return users.find((user) => user.name === title);
+  };
+
+  const userAvatar = () => {
+    const user = findUserByName();
+    if (!user) return null;
+    return <Avatar name={user.name} available={user.available} />;
+  };
 
   return (
     <div className={styles.column}>
       <div className={styles.header}>
         <span className={styles.leftHeading}>
-          {grouping !== Grouping.USER ? (
-            <img src={getIcon()} />
-          ) : (
-            <p>{title.substring(0, 2).toUpperCase()}</p>
-          )}
+          {grouping === Grouping.USER ? userAvatar() : <img src={getIcon()} />}
           <span className={styles.title}>{getHeading()}</span>
           <span className={styles.count}>{cards.length}</span>
         </span>
 
-        <span>
+        <span className={styles.rightHeading}>
           <img src={ActionsIcons.ADD} className={styles.button} />
           <img src={ActionsIcons.THREEDOTS} className={styles.button} />
         </span>

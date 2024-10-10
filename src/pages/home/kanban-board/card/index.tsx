@@ -1,4 +1,13 @@
-import { Card as CardType, PriorityIcons, User } from "../../../../types";
+import { Avatar } from "../../../../components/avatar";
+import { useGrouping } from "../../../../contexts/grouping.context";
+import { getPriorityIcon, getStatusIcon } from "../../../../lib";
+import {
+  Card as CardType,
+  Grouping,
+  PriorityIcons,
+  StatusIcons,
+  User,
+} from "../../../../types";
 import styles from "./card.module.css";
 
 interface CardProps {
@@ -7,24 +16,35 @@ interface CardProps {
 }
 
 const Card = ({ card, user }: CardProps) => {
+  const { grouping } = useGrouping();
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <span>{card.id}</span>
-        <div
-          className={`${styles.profile} ${user?.available && styles.available}`}
-        >
-          <img
-            // src={user?.image}
-            alt={user?.name.substring(0, 2).toUpperCase()}
-          />
-        </div>
+        {grouping !== Grouping.USER && user && (
+          <Avatar name={user?.name} available={user?.available} />
+        )}
       </div>
-      <p className={styles.title}>{card.title}</p>
+      <div className={styles.title}>
+        {grouping !== Grouping.STATUS && (
+          <img
+            src={getStatusIcon(card.status)}
+            alt="Status Icon"
+            style={{ margin: "4px" }}
+          />
+        )}
+        <span>{card.title}</span>
+      </div>
       <div className={styles.footer}>
-        <span className={styles.icon}>
-          <img src={PriorityIcons.URGENT_GREY} alt={String(card.priority)} />
-        </span>
+        {grouping !== Grouping.PRIORITY && (
+          <span className={styles.icon}>
+            <img
+              src={getPriorityIcon(String(card.priority))}
+              alt={`Priority: ${card.priority}`}
+            />
+          </span>
+        )}
         {card.tag.map((text, i) => (
           <span key={i} className={styles.tag}>
             <span className={styles.tagContent}>{text}</span>
