@@ -7,7 +7,7 @@ import {
   DropDownTrigger,
 } from "../dropdown";
 import styles from "./navbar.module.css";
-import { Grouping, Ordering } from "../../types";
+import { ActionsIcons, Grouping, Ordering } from "../../types";
 import { useGrouping } from "../../contexts/grouping.context";
 import { useOrdering } from "../../contexts/ordering.context";
 
@@ -22,7 +22,7 @@ export const Navbar = () => {
           <Button
             label="Display"
             Lefticon="/assets/Display.svg"
-            Righticon="/assets/down.svg"
+            Righticon={ActionsIcons.DOWN}
             size="small"
             shadow
           />

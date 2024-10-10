@@ -7,6 +7,7 @@ import {
 } from "../dropdown";
 import { Button } from "../button";
 import styles from "./select.module.css";
+import { ActionsIcons } from "../../types";
 
 export const Select = <T,>({
   options,
@@ -30,7 +31,7 @@ export const Select = <T,>({
       <DropDownTrigger>
         <Button
           label={selectedOption ? selectedOption.label : placeholder}
-          Righticon="/assets/down.svg"
+          Righticon={ActionsIcons.DOWN}
           size={size}
           width={width}
         />

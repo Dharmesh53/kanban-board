@@ -3,6 +3,7 @@ import { Card, Grouping, User } from "../../../types";
 import { useState, useEffect } from "react";
 import { useGrouping } from "../../../contexts/grouping.context";
 import { convertArrayIntoObject } from "../../../lib";
+import styles from "./kanban.module.css";
 
 interface BoardProps {
   cards: Card[];
@@ -29,7 +30,7 @@ export const Board = ({ cards, users }: BoardProps) => {
   const groupKeys = Object.keys(groupedCards);
 
   return (
-    <div className="board">
+    <div className={styles.board}>
       {groupKeys.map((key) => {
         let title = key;
         if (grouping === "user") {
@@ -38,12 +39,14 @@ export const Board = ({ cards, users }: BoardProps) => {
         }
 
         return (
-          <Column
-            key={key}
-            title={title}
-            cards={groupedCards[key]}
-            users={users}
-          />
+          <>
+            <Column
+              key={key}
+              title={title}
+              cards={groupedCards[key]}
+              users={users}
+            />
+          </>
         );
       })}
     </div>

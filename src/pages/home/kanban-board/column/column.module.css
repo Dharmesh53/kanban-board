@@ -1,0 +1,56 @@
+.column {
+  flex: 0 0 380px;
+  margin: 0 1.5rem;
+  min-width: 380px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.column::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  display: flex;
+  padding: 2rem 0;
+  justify-content: space-between;
+  font-family: "Inter";
+}
+
+.leftHeading {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  gap: 1rem;
+}
+
+.leftHeading p:first-of-type {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 1px solid black;
+  font-size: var(--text-xs);
+  width: 23px;
+  height: 23px;
+}
+
+.title {
+  font-size: 1.15rem;
+}
+
+.count {
+  color: var(--text-neutral);
+}
+
+.button {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
