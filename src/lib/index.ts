@@ -6,8 +6,8 @@ export const QUICKSELL_API_URL =
 export const convertArrayIntoObject = (
   key: keyof Card,
   array: Card[]
-): { [key: string]: Card[] } => {
-  const object: { [key: string]: Card[] } = {};
+): Record<string, Card[]> => {
+  const object: Record<string, Card[]> = {};
 
   array.forEach((card) => {
     const groupingKey = String(card[key]);

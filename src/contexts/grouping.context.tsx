@@ -9,6 +9,14 @@ interface GroupingContextProps {
 
 const GroupingContext = createContext<GroupingContextProps | null>(null);
 
+export const useGrouping = () => {
+  const context = useContext(GroupingContext);
+  if (!context) {
+    throw new Error("You are using contecxt outside the provider");
+  }
+  return context;
+};
+
 export const GroupingProvider = ({
   children,
 }: {
@@ -20,12 +28,4 @@ export const GroupingProvider = ({
       {children}
     </GroupingContext.Provider>
   );
-};
-
-export const useGrouping = () => {
-  const context = useContext(GroupingContext);
-  if (!context) {
-    throw new Error("You are using contecxt outside the provider");
-  }
-  return context;
 };

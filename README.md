@@ -1,4 +1,4 @@
-QUICK SELL ASSIGNMENT9
+QUICK SELL ASSIGNMENT
 
 The application can offer three distinct ways to group the data:
 

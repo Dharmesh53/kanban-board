@@ -3,7 +3,6 @@ import {
   ActionsIcons,
   Card as CardType,
   Grouping,
-  StatusIcons,
   User,
 } from "../../../../types";
 import styles from "./column.module.css";

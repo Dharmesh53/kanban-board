@@ -18,11 +18,11 @@
   cursor: not-allowed;
 }
 
-.Lefticon:first-child {
+.Lefticon {
   margin-right: 8px;
 }
 
-.Righticon:last-child {
+.Righticon {
   margin-left: 4px;
 }
 
