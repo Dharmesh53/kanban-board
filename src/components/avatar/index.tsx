@@ -9,7 +9,11 @@ interface AvatarProps {
 export const Avatar = ({ name, available, src }: AvatarProps) => {
   return (
     <div className={`${styles.profile} ${available ? styles.available : ""}`}>
-      <img src={src || ""} alt={name.substring(0, 2).toUpperCase()} />
+      {src ? (
+        <img src={src} alt="-" />
+      ) : (
+        <span>{name.substring(0, 2).toUpperCase()}</span>
+      )}
     </div>
   );
 };
